@@ -1,0 +1,159 @@
+*,
+*::before,
+*::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body {
+    background-color: black;
+    color: white;
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    overflow-x: hidden;
+}
+body *::before,
+body *::after {
+    display: block;
+}
+img {
+    max-width: 100%;
+    display: block;
+}
+ul {
+    list-style: none;
+}
+a {
+    text-decoration: none;
+}
+ion-icon {
+    font-size: 20px;
+    cursor: pointer;
+}
+h1 {
+    text-align: center;
+    margin-top: 50px;
+}
+main {
+    padding: 50px 0 0;
+}
+.header {
+    width: 100%;
+}
+.header__nav {
+    background-color: darkslategray;
+    height: 50px;
+    width: 100%;
+    padding: 0 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: fixed;
+    top: 0;
+}
+.nav__items,
+.nav__functions {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+.nav__functions figure {
+    width: 20px;
+    aspect-ratio: 1;
+    cursor: pointer;
+}
+.header__nav figure:hover {
+    transform: scale(1.25);
+}
+
+@media (min-width: 400px) {
+    .nav__items,
+    .nav__functions {
+        gap: 15px;
+    }
+}
+
+@media (min-width: 700px) {
+    ion-icon {
+        font-size: 25px;
+    }
+    main {
+        padding: 0 0 0 50px;
+    }
+    .header__nav {
+        height: 100vh;
+        width: 50px;
+        padding: 15px 0;
+        flex-direction: column;
+    }
+    .nav__items,
+    .nav__functions {
+        flex-direction: column;
+        gap: 20px;
+    }
+    .nav__functions figure {
+        width: 25px;
+    }
+    /* ************************************************* */
+    /** estilos generales de los iconos y los tooltips **/
+    /* *********************************************** */
+    .icon {
+        position: relative;
+    }
+    .icon::after {
+        background-color: darkslategray;
+        position: absolute;
+        bottom: 0;
+        left: 35px;
+        border: 1px solid;
+        padding: 10px;
+        border-radius: 10px;
+        font-size: 13px;
+        width: max-content;
+    }
+    /* **************************** */
+    /** estilos para cada tooltip **/
+    /* ************************** */
+    .icon__home:hover::after {
+        content: 'Ir al inicio';
+    }
+    .icon__person:hover::after {
+        /* content: 'Contáctame'; */
+        content: 'Sobre mi';
+    }
+    .icon__skills:hover::after {
+        content: 'Habilidades';
+    }
+    .icon__bookmark:hover::after {
+        content: 'Portafolio de proyectos';
+    }
+    .icon__school:hover::after {
+        content: 'Educación';
+    }
+    .icon__ribbon:hover::after {
+        content: 'Logros destacados';
+    }
+    .icon__mail:hover::after {
+        content: 'Descarga mi CV';
+    }
+    .icon__lang:hover::after {
+        content: 'Cambia de idioma';
+    }
+    .icon__volume:hover::after {
+        content: 'Enciende/apaga el sonido';
+    }
+    .icon__night:hover::after {
+        content: 'Activa/desactiva el modo oscuro';
+    }
+    .presentation {
+        width: 50%;
+        padding: 25px;
+    }
+    .presentation__text {
+        border: 1px solid;
+        border-radius: 20px;
+        padding: 25px;
+    }
+}
