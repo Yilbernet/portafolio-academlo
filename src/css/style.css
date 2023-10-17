@@ -34,9 +34,8 @@ ion-icon {
 h1 {
     text-align: center;
     margin-top: 50px;
-}
-main {
-    padding: 50px 0 0;
+    font-size: 2.5rem;
+    padding: 10px;
 }
 .header {
     width: 100%;
@@ -67,6 +66,12 @@ main {
 .header__nav figure:hover {
     transform: scale(1.25);
 }
+.main {
+    padding: 50px 0 0;
+}
+.presentation {
+    padding: 10px;
+}
 
 @media (min-width: 400px) {
     .nav__items,
@@ -78,9 +83,6 @@ main {
 @media (min-width: 700px) {
     ion-icon {
         font-size: 25px;
-    }
-    main {
-        padding: 0 0 0 50px;
     }
     .header__nav {
         height: 100vh;
@@ -147,13 +149,32 @@ main {
     .icon__night:hover::after {
         content: 'Activa/desactiva el modo oscuro';
     }
-    .presentation {
-        width: 50%;
-        padding: 25px;
+    /* **************************************** */
+    /** estilos para el cuerpo del portafolio **/
+    /* ************************************** */
+    .main {
+        padding: 0 0 0 50px;
     }
-    .presentation__text {
-        border: 1px solid;
-        border-radius: 20px;
-        padding: 25px;
+    .presentation {
+        height: calc(100vh - 2.5rem - 50px);
+        padding: 50px;
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-rows: repeat(2, 1fr);
+        align-items: center;
+    }
+    .presentation h2 {
+        font-size: 2rem;
+        grid-column: 1 / 2;
+    }
+    .presentation p {
+        font-size: 1.8rem;
+        grid-column: 1 / 2;
+        align-self: self-start;
+        width: 90%;
+    }
+    .presentation img {
+        grid-column: 2 / 3;
+        grid-row: 1 / 3;
     }
 }
