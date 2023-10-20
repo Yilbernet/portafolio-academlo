@@ -10,7 +10,7 @@
     <link rel="shortcut icon" href="./src/img/logo-w.png" type="image/x-icon">
     <title>Portafolio</title>
 </head>
-<body>
+<body class="dark">
 
     <header class="header">
         <nav class="header__nav">
@@ -49,11 +49,11 @@
                 <a class="icon icon__volume">
                     <!-- <ion-icon name="volume-high-sharp"></ion-icon> -->
                     <ion-icon name="volume-mute-sharp"></ion-icon>
-                    <audio autoplay loop>
-                        <source src="./src/img/sound.mp3" type="audio/mp3">
+                    <audio autoplay loop download="false">
+                        <source src="./src/img/sonido.mp3" type="audio/mp3">
                     </audio>
                 </a>
-                <a class="icon icon__night">
+                <a class="icon icon__dark">
                     <!-- <ion-icon name="moon-sharp"></ion-icon> -->
                     <ion-icon name="sunny-sharp"></ion-icon>
                 </a>
@@ -67,7 +67,7 @@
 
         <section id="0" class="presentation">
             <h2>Wilber Millán</h2>
-            <p>Egresado del programa de desarrollo web y ciencias de computacion de la academia mexicana online "Academlo".</p>
+            <p>Egresado del programa de desarrollo web y ciencias de computación de la academia mexicana online "Academlo".</p>
             <img src="./src/img/logo-w.gif" alt="Logo-w">
         </section>
         <section id="1" class="about">
@@ -142,8 +142,13 @@
 
     </main>
 
-    <footer>
-        <!--  -->
+    <footer class="footer active">
+        <a class="icon icon__link" href="https://www.linkedin.com/in/yilber-net" target="_blank">
+            <ion-icon name="logo-linkedin"></ion-icon>
+        </a>
+        <a class="icon icon__git" href="https://github.com/yilbernet" target="_blank">
+            <ion-icon name="logo-github"></ion-icon>
+        </a>
     </footer>
 
 </body>

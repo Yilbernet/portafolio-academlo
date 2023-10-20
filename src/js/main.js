@@ -44,8 +44,22 @@ function sound () {
         }
     });
 }
+function darkMode () {
+    const body = document.querySelector('body');
+    const btn = document.querySelector('.icon__dark');
+    const icon = document.querySelector('.icon__dark ion-icon');
+    btn.addEventListener('click', ()=>{
+        body.classList.toggle('dark');
+        if (icon.name==='sunny-sharp') {
+            icon.name = 'moon-sharp';
+        } else {
+            icon.name = 'sunny-sharp';
+        }
+    });
+}
 function main () {
     skills();
     sound();
+    darkMode();
 }
 main();
