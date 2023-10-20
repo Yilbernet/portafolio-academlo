@@ -3,7 +3,7 @@
 /***** portafolio fundamentos academlo *****/
 /******************************************/
 
-function handles () {
+function skills () {
     // Hago la lectura de los elementos del DOM
     const slider = document.querySelector('.slider__skills');
     const labels = document.querySelectorAll('.slider__skills img');
@@ -27,7 +27,25 @@ function handles () {
         `;
     }, 3000);
 }
+function sound () {
+    const audio = document.querySelector('.icon__volume');
+    const icon = document.querySelector('.icon__volume ion-icon');
+    const mp3 = document.querySelector('.icon__volume audio');
+    audio.addEventListener('click', ()=>{
+        if (mp3.muted) {
+            mp3.muted = false;
+        } else {
+            mp3.muted = true;
+        }
+        if (icon.name==='volume-mute-sharp') {
+            icon.name = 'volume-high-sharp';
+        } else {
+            icon.name = 'volume-mute-sharp';
+        }
+    });
+}
 function main () {
-    handles();
+    skills();
+    sound();
 }
 main();
