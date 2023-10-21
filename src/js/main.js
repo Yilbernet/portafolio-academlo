@@ -30,12 +30,13 @@ function skills () {
 function sound () {
     const audio = document.querySelector('.icon__volume');
     const icon = document.querySelector('.icon__volume ion-icon');
-    const mp3 = document.querySelector('.icon__volume audio');
+    const mp3 = document.querySelector('.nav__functions audio');
     audio.addEventListener('click', ()=>{
-        if (mp3.muted) {
-            mp3.muted = false;
+        if (mp3.paused) {
+            mp3.play();
         } else {
-            mp3.muted = true;
+            mp3.pause();
+            mp3.currentTime = 0;
         }
         if (icon.name==='volume-mute-sharp') {
             icon.name = 'volume-high-sharp';
