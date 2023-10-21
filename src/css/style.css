@@ -6,13 +6,15 @@
     box-sizing: border-box;
 }
 body {
+    background: url('../img/background/Fondo-animado\ cerum-fondo-blanco.gif')no-repeat;
+    background-size: cover;
     width: 100%;
     max-width: 1200px;
     margin: 0 auto;
     overflow-x: hidden;
 }
 body.dark {
-    background: url('../img/alternate-stars.gif')no-repeat;
+    background: url('../img/background/particulas-hd.gif')no-repeat;
     background-size: cover;
     color: white;
 }
@@ -136,12 +138,10 @@ h1 {
     align-self: center;
 }
 .footer {
-    /* border: 1px solid; */
     width: 90px;
     height: 90px;
     position: fixed;
     bottom: 0;
-    /* left: calc(100% - 120px); */
     right: 0;
     margin: 15px;
 }
@@ -225,7 +225,6 @@ footer.active .icon__git {
         content: 'Ir al inicio';
     }
     .icon__person:hover::after {
-        /* content: 'Contáctame'; */
         content: 'Sobre mi';
     }
     .icon__skills:hover::after {
