@@ -57,9 +57,24 @@ function darkMode () {
         }
     });
 }
+function socialMedia () {
+    const nav = document.querySelector('.header__nav');
+    const footer = document.querySelector('.footer');
+    footer.classList.toggle('active');
+    setTimeout(() => {
+        footer.classList.toggle('active');
+    }, 2000);
+    nav.addEventListener('click', ()=>{
+        footer.classList.toggle('active');
+        setTimeout(() => {
+            footer.classList.toggle('active');
+        }, 2000);
+    });
+}
 function main () {
     skills();
     sound();
     darkMode();
+    socialMedia();
 }
 main();
