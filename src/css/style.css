@@ -6,7 +6,7 @@
     box-sizing: border-box;
 }
 body {
-    background: url('../img/background/Fondo-animado\ cerum-fondo-blanco.gif')no-repeat;
+    background: url('../img/background/bright.gif')no-repeat;
     background-size: cover;
     width: 100%;
     max-width: 1200px;
@@ -14,7 +14,7 @@ body {
     overflow-x: hidden;
 }
 body.dark {
-    background: url('../img/background/particulas-hd.gif')no-repeat;
+    background: url('../img/background/dark.gif')no-repeat;
     background-size: cover;
     color: white;
 }
