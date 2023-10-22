@@ -100,17 +100,24 @@ h1 {
 }
 .about iframe {
     width: 80%;
-    height: 40vh;
+    height: 35vh;
     align-self: center;
 }
 .skills {
     padding: 50px 10px;
     height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+.skills__hard {
+    display: flex;
+    flex-direction: column;
 }
 .slider__skills {
     background: url('../img/alternate-stars.gif')no-repeat;
     background-size: cover;
-    width: 100%;
+    align-self: center;
+    width: 80%;
     height: 50vh;
     display: flex;
     justify-content: center;
