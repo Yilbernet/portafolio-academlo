@@ -49,12 +49,19 @@ function darkMode () {
     const body = document.querySelector('body');
     const btn = document.querySelector('.icon__dark');
     const icon = document.querySelector('.icon__dark ion-icon');
+    const iframe = document.querySelector('.header iframe');
     btn.addEventListener('click', ()=>{
         body.classList.toggle('dark');
+        const src = iframe.getAttribute('src');
         if (icon.name==='sunny-sharp') {
             icon.name = 'moon-sharp';
         } else {
             icon.name = 'sunny-sharp';
+        }
+        if (src==='./particles-dark.html') {
+            iframe.setAttribute('src','./particles-bright.html');
+        } else {
+            iframe.setAttribute('src','./particles-dark.html');
         }
     });
 }
