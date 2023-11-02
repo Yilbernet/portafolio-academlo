@@ -1,0 +1,49 @@
+
+/* ************************************** */
+/** estilos generales del idioma ingles **/
+/* ************************************ */
+
+@media (min-width: 850px) {
+    .icon__home:hover::after {
+        content: 'Go to start';
+    }
+    .icon__person:hover::after {
+        content: 'About me';
+    }
+    .icon__skills:hover::after {
+        content: 'Skills';
+    }
+    .icon__bookmark:hover::after {
+        content: 'Projects Portfolio';
+    }
+    .icon__school:hover::after {
+        content: 'Education';
+    }
+    .icon__ribbon:hover::after {
+        content: 'Notable achievements';
+    }
+    .icon__mail:hover::after {
+        content: 'Download my CV';
+    }
+    .icon__lang:hover::after {
+        content: 'Change language';
+    }
+    .icon__volume:hover::after {
+        content: 'Turn sound on/off';
+    }
+    .icon__dark:hover::after {
+        content: 'Turn dark mode on/off';
+    }
+    .icon__link:hover::after {
+        content: 'Contact me';
+        height: max-content;
+        top: -45px;
+        left: -45px;
+    }
+    .icon__git:hover::after {
+        content: 'See my way of programming';
+        height: max-content;
+        top: 0;
+        left: -200px;
+    }
+}

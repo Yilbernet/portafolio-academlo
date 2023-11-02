@@ -27,43 +27,55 @@ function skills () {
         `;
     }, 2000);
 }
-function sound () {
-    const audio = document.querySelector('.icon__volume');
+function music () {
     const icon = document.querySelector('.icon__volume ion-icon');
     const mp3 = document.querySelector('.nav__functions audio');
-    audio.addEventListener('click', ()=>{
-        if (mp3.paused) {
-            mp3.play();
-        } else {
-            mp3.pause();
-            mp3.currentTime = 0;
-        }
-        if (icon.name==='volume-mute-sharp') {
-            icon.name = 'volume-high-sharp';
-        } else {
-            icon.name = 'volume-mute-sharp';
-        }
-    });
+    if (mp3.paused) {
+        mp3.play();
+        localStorage.setItem('mp3', JSON.stringify('play'));
+    } else {
+        mp3.pause();
+        mp3.currentTime = 0;
+        localStorage.setItem('mp3', JSON.stringify('stop'));
+    }
+    if (icon.name==='volume-mute-sharp') {
+        icon.name = 'volume-high-sharp';
+    } else {
+        icon.name = 'volume-mute-sharp';
+    }
 }
-function darkMode () {
+function sound (mp3) {
+    if (mp3==='play') {
+        music();
+    }
+    const audio = document.querySelector('.icon__volume');
+    audio.addEventListener('click', music);
+}
+function mode () {
     const body = document.querySelector('body');
-    const btn = document.querySelector('.icon__dark');
+    body.classList.toggle('dark');
     const icon = document.querySelector('.icon__dark ion-icon');
     const iframe = document.querySelector('.header iframe');
-    btn.addEventListener('click', ()=>{
-        body.classList.toggle('dark');
-        const src = iframe.getAttribute('src');
-        if (icon.name==='sunny-sharp') {
-            icon.name = 'moon-sharp';
-        } else {
-            icon.name = 'sunny-sharp';
-        }
-        if (src==='./particles-dark.html') {
-            iframe.setAttribute('src','./particles-bright.html');
-        } else {
-            iframe.setAttribute('src','./particles-dark.html');
-        }
-    });
+    const src = iframe.getAttribute('src');
+    if (icon.name==='sunny-sharp') {
+        icon.name = 'moon-sharp';
+        localStorage.setItem('mode', JSON.stringify('bright'));
+    } else {
+        icon.name = 'sunny-sharp';
+        localStorage.setItem('mode', JSON.stringify('dark'));
+    }
+    if (src==='./particles-dark.html') {
+        iframe.setAttribute('src','./particles-bright.html');
+    } else {
+        iframe.setAttribute('src','./particles-dark.html');
+    }
+}
+function darkMode (dark) {
+    if (dark==='bright') {
+        mode();
+    }
+    const btn = document.querySelector('.icon__dark');
+    btn.addEventListener('click', mode);
 }
 function socialMedia () {
     const nav = document.querySelector('.header__nav');
@@ -93,6 +105,8 @@ async function getApi() {
 async function database () {
     const db = {
         projects: JSON.parse(localStorage.getItem('projects')) || await getApi(),
+        mp3: JSON.parse(localStorage.getItem('mp3')) || 'play',
+        mode: JSON.parse(localStorage.getItem('mode')) || 'bright',
     }
     return db;
 }
@@ -139,11 +153,11 @@ function splideJs () {
     splide.mount();
 }
 async function main () {
-    skills();
-    sound();
-    darkMode();
-    socialMedia();
     const db = await database();
+    skills();
+    sound(db.mp3);
+    darkMode(db.mode);
+    socialMedia();
     printProjects(db.projects);
     splideJs();
 }
