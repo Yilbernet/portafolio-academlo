@@ -91,6 +91,25 @@ function socialMedia () {
         }, 2000);
     });
 }
+function english (eng) {
+    const URL = location.href.split('/').at(-1);
+    if (eng!=='esp' && URL!=='english.html') {
+        return location.href = '/english.html';
+    }
+    const icon = document.querySelector('.icon__lang');
+    const label = document.querySelector('.icon__lang img');
+    const img = label.src.split('/').at(-1);
+    icon.addEventListener('click', ()=>{
+        if (img==='esp.png') {
+            localStorage.setItem('eng', JSON.stringify('esp'));
+            return location.href = '/';
+        } else {
+            localStorage.setItem('eng', JSON.stringify('eng'));
+            return location.href = '/english.html';
+        }
+    });
+    
+}
 async function getApi() {
     const URL='https://fundametos-api-porfolios-dev-exsn.2.ie-1.fl0.io/api/v1/projects';
     try {
@@ -107,10 +126,11 @@ async function database () {
         projects: JSON.parse(localStorage.getItem('projects')) || await getApi(),
         mp3: JSON.parse(localStorage.getItem('mp3')) || 'play',
         mode: JSON.parse(localStorage.getItem('mode')) || 'bright',
+        eng: JSON.parse(localStorage.getItem('eng')) || 'esp',
     }
     return db;
 }
-function printProjects (projects) {
+function printProjects (db) {
     const description = document.querySelectorAll('.splide .splide__slide');
     const URLS = [
                 'https://yilbernet-poke-api.netlify.app/',
@@ -118,26 +138,42 @@ function printProjects (projects) {
                 'https://yilbernet-weather-app.netlify.app/',
                 ];
     description.forEach((element, index) => {
-        if (projects[index]) {
-            const { titulo, descripcion, tecnologias, image} = projects[index];
-            let html = `
-                <article class="project">
-                    <h3>${titulo}</h3>
-                    <p><span>Descripción:</span><br>${descripcion}</p>
-                    <p><span>Tecnologías:</span><br>${tecnologias}</p>
-                </article>
-                <a class="project__img" href="${URLS[index]}" target="_blank">
-                    <img src="${image}" alt="img slide">
-                </a>
-            `;
-            element.innerHTML = html;
+        if (db.projects[index]) {
+            const { titulo, descripcion, tecnologias, image } = db.projects[index];
+            const { title, description, technologies } = db.projects[index];
+            let html = '';
+            if (db.eng === 'esp') {
+                html = `
+                    <article class="project">
+                        <h3>${titulo}</h3>
+                        <p><span>Descripción:</span><br>${descripcion}</p>
+                        <p><span>Tecnologías:</span><br>${tecnologias}</p>
+                    </article>
+                    <a class="project__img" href="${URLS[index]}" target="_blank">
+                        <img src="${image}" alt="img slide">
+                    </a>
+                `;
+                element.innerHTML = html;
+            } else {
+                html = `
+                    <article class="project">
+                        <h3>${title}</h3>
+                        <p><span>Description:</span><br>${description}</p>
+                        <p><span>Technologies:</span><br>${technologies}</p>
+                    </article>
+                    <a class="project__img" href="${URLS[index]}" target="_blank">
+                        <img src="${image}" alt="img slide">
+                    </a>
+                `;
+                element.innerHTML = html;
+            }
         }
     });
 }
 function splideJs () {
     let splide = new Splide('.splide', {
         type: 'loop',
-        // autoplay: true,
+        autoplay: true,
         interval: 3000,
         perPage: 1,
         speed: 1000,
@@ -155,10 +191,11 @@ function splideJs () {
 async function main () {
     const db = await database();
     skills();
-    sound(db.mp3);
-    darkMode(db.mode);
     socialMedia();
-    printProjects(db.projects);
+    darkMode(db.mode);
+    sound(db.mp3);
+    english(db.eng);
+    printProjects(db);
     splideJs();
 }
 main();
