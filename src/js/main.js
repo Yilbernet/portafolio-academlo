@@ -46,7 +46,7 @@ function music () {
 }
 function sound (mp3) {
     if (mp3==='play') {
-        music();
+        setTimeout(music, 1000);
     }
     const audio = document.querySelector('.icon__volume');
     audio.addEventListener('click', music);
@@ -124,7 +124,7 @@ async function getApi() {
 async function database () {
     const db = {
         projects: JSON.parse(localStorage.getItem('projects')) || await getApi(),
-        mp3: JSON.parse(localStorage.getItem('mp3')) || 'play',
+        mp3: JSON.parse(localStorage.getItem('mp3')) || 'stop',
         mode: JSON.parse(localStorage.getItem('mode')) || 'bright',
         eng: JSON.parse(localStorage.getItem('eng')) || 'esp',
     }
@@ -174,7 +174,7 @@ function splideJs () {
     let splide = new Splide('.splide', {
         type: 'loop',
         autoplay: true,
-        interval: 3000,
+        interval: 5000,
         perPage: 1,
         speed: 1000,
         perMove: 1,
