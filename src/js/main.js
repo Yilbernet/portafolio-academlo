@@ -55,8 +55,9 @@ function mode () {
     const body = document.querySelector('body');
     body.classList.toggle('dark');
     const icon = document.querySelector('.icon__dark ion-icon');
-    const iframe = document.querySelector('.header iframe');
-    const src = iframe.getAttribute('src');
+    const iframe = document.querySelector('.header iframe').contentDocument;
+    const link = iframe.querySelector('link');
+    const href = link.getAttribute('href');
     if (icon.name==='sunny-sharp') {
         icon.name = 'moon-sharp';
         localStorage.setItem('mode', JSON.stringify('bright'));
@@ -64,10 +65,10 @@ function mode () {
         icon.name = 'sunny-sharp';
         localStorage.setItem('mode', JSON.stringify('dark'));
     }
-    if (src==='./particles-dark.html') {
-        iframe.setAttribute('src','./particles-bright.html');
+    if (href==='./src/particles/dark.css') {
+        link.setAttribute('href', './src/particles/bright.css');
     } else {
-        iframe.setAttribute('src','./particles-dark.html');
+        link.setAttribute('href', './src/particles/dark.css');
     }
 }
 function darkMode (dark) {
@@ -125,7 +126,7 @@ async function database () {
     const db = {
         projects: JSON.parse(localStorage.getItem('projects')) || await getApi(),
         mp3: JSON.parse(localStorage.getItem('mp3')) || 'stop',
-        mode: JSON.parse(localStorage.getItem('mode')) || 'bright',
+        mode: JSON.parse(localStorage.getItem('mode')) || 'dark',
         eng: JSON.parse(localStorage.getItem('eng')) || 'esp',
     }
     return db;
