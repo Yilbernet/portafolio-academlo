@@ -55,9 +55,6 @@ function mode () {
     const body = document.querySelector('body');
     body.classList.toggle('dark');
     const icon = document.querySelector('.icon__dark ion-icon');
-    const iframe = document.querySelector('.header iframe').contentDocument;
-    const link = iframe.querySelector('link');
-    const href = link.getAttribute('href');
     if (icon.name==='sunny-sharp') {
         icon.name = 'moon-sharp';
         localStorage.setItem('mode', JSON.stringify('bright'));
@@ -65,11 +62,16 @@ function mode () {
         icon.name = 'sunny-sharp';
         localStorage.setItem('mode', JSON.stringify('dark'));
     }
-    if (href==='./src/particles/dark.css') {
-        link.setAttribute('href', './src/particles/bright.css');
-    } else {
-        link.setAttribute('href', './src/particles/dark.css');
-    }
+    const iframe = document.querySelector('.header iframe');
+    iframe.contentWindow.addEventListener('load', ()=>{
+        const link = iframe.contentDocument.querySelector('link');
+        const href = link.getAttribute('href');
+        if (href==='./src/particles/dark.css') {
+            link.setAttribute('href', './src/particles/bright.css');
+        } else {
+            link.setAttribute('href', './src/particles/dark.css');
+        }
+    });
 }
 function darkMode (dark) {
     if (dark==='bright') {
