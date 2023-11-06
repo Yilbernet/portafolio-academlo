@@ -63,19 +63,17 @@ function mode () {
         localStorage.setItem('mode', JSON.stringify('dark'));
     }
     const iframe = document.querySelector('.header iframe');
-    iframe.contentWindow.addEventListener('load', ()=>{
-        const link = iframe.contentDocument.querySelector('link');
-        const href = link.getAttribute('href');
-        if (href==='./src/particles/dark.css') {
-            link.setAttribute('href', './src/particles/bright.css');
-        } else {
-            link.setAttribute('href', './src/particles/dark.css');
-        }
-    });
+    const link = iframe.contentDocument.querySelector('link');
+    const href = link.getAttribute('href');
+    if (href==='./src/particles/dark.css') {
+        link.setAttribute('href', './src/particles/bright.css');
+    } else {
+        link.setAttribute('href', './src/particles/dark.css');
+    }
 }
 function darkMode (dark) {
     if (dark==='bright') {
-        mode();
+        setTimeout(mode, 100);
     }
     const btn = document.querySelector('.icon__dark');
     btn.addEventListener('click', mode);
