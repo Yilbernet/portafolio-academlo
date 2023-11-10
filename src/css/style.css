@@ -122,16 +122,11 @@ h1 {
     flex-direction: column;
 }
 .slider__skills {
-    background: url('../img/alternate-stars.gif')no-repeat;
-    background-size: cover;
     align-self: center;
     width: 80%;
     height: 50vh;
     display: flex;
     justify-content: center;
-}
-.dark .slider__skills {
-    background: none;
 }
 .projects {
     padding: 50px 10px;
